@@ -38,6 +38,14 @@
 
 
                 </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-left:70%;">
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('main.updateprofile',name=current_user.username)}}">Profile</a></li>
+                    <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                    {% else %}
+                    <li><a href="{{url_for('auth.login')}}" style="text-decoration: none;font-weight: bolder;color: white;">Sign in</a></li>
+                    {%endif%}
+                </ul>
 
             </div>
         </nav>

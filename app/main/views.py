@@ -2,8 +2,8 @@ from flask import render_template, redirect, url_for
 from flask_login import login_required, current_user
 
 from . import main
-from .forms import PostForm, CommentForm
-from ..models import Post, Comment, User
+from .forms import PostForm, CommentForm,UpdateProfile
+from ..models import Post, Comment, User,Upvote,Downvote
 
 
 @main.route('/')
@@ -70,3 +70,34 @@ def user():
     if user is None:
         return ('not found')
     return render_template('profile.html', user=user)
+
+@main.route('/user/<name>/update_profile', methods=['POST', 'GET'])
+@login_required
+def updateprofile(name):
+    form = UpdateProfile()
+    user = User.query.filter_by(username=name).first()
+    if user is None:
+        error = 'The user does not exist'
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        user.save()
+        return redirect(url_for('.profile', name=name))
+    return render_template('profile/update_profile.html', form=form)
+
+
+@main.route('/like/<int:id>', methods=['POST', 'GET'])
+@login_required
+def upvote(id):
+    post = Post.query.get(id)
+    vote_mpya = Upvote(post=post, upvote=1)
+    vote_mpya.save()
+    return redirect(url_for('main.posts'))
+
+
+@main.route('/dislike/<int:id>', methods=['GET', 'POST'])
+@login_required
+def downvote(id):
+    post = Post.query.get(id)
+    vm = Downvote(post=post, downvote=1)
+    vm.save()
+    return redirect(url_for('main.posts'))

@@ -1,4 +1,4 @@
-{% extends 'bootstrap/base.html'%}
+{% extends 'base.html'%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +12,20 @@
 
 <body>
     <h1>HI THIS IS PERFECT PITCHES!</h1>
+    <div class="container">
+
+        <div class="pitches" style="margin-top: 30%;margin-left: 37%;">
+            <div id="buttons d-block mx-auto">
+                <a class="btn btn-outline-secondary " href="/new_post" style="font-size:40px;font-family: 'segoe UI';color: black;">New Pitch</a>
+                <a class="btn btn-outline-secondary" href="/posts" style="font-size:40px;font-family: 'segoe UI';color: black;">View Pitches</a>
+            </div>
+        </div>
+    </div>
+    <style>
+        body {
+            background-image: url(/static/images/background.jpg);
+        }
+    </style>
 
 </body>
 {% endblock %}

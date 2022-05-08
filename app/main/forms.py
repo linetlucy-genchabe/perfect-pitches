@@ -14,3 +14,11 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     comment = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+class Vote(FlaskForm):
+    submit = SelectField('Like')
+
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('bio', validators=[DataRequired()])
+    submit = SubmitField('Post')

@@ -4,14 +4,14 @@
         <br><br>
     </div>
     <div class="jumbotron">
-        <div class="overlay">
+        <div class="overlay" style="margin-top: -5%;">
             <h1 class="">Pitches</h1>
             <a href="/new_post"><button class="btn">New Pitch</button></a>
         </div>
     </div>
     <div class="card-columns">
         {% if posts %} {% for my_post in posts %}
-        <div class="card">
+        <div class="card" style="margin-bottom: 1%;">
             <div class="card-body">
                 <p>{{my_post.post}}</p>
                 <p><br> Category: {{my_post.category}}</p>
@@ -27,7 +27,7 @@
         {% endfor %} {% endif %}
     </div>
 </div>
-{% endmacro %} {% macro display_comments(comments) %}
+{% endmacro %}{% macro display_comments(comments) %}
 <div class="container">
 </div>
 <div class="card-columns">

@@ -1,18 +1,28 @@
-{% extends 'base.html'%} {% from 'comment_macro.html' import display_comments%} {% import 'bootstrap/wtf.html' as wtf %}
-<div class="container-fluid">
-    <div class="jumbotron">
-        <h1>Comments page</h1>
-        <a href="/posts"><button class="btn">All Pitches</button></a>
-    </div>
-    <div class="row col-md-12">
-        <div class="col-md-4">
-            <div class="text-white">{{wtf.quick_form(form)}}</div>
-        </div>
-        <div class="col-md-8">
-            <h2 class="text-center text-white">All comments:</h2>
-            <p>{{display_comments(comments)}}</p>
-        </div>
-    </div>
+{% extends 'base.html'%} {% from 'macros.html' import display_comments%} {% import 'bootstrap/wtf.html' as wtf %} {% block content %}
 
-</div>
+<body>
+
+
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>Comments page</h1>
+            <a href="/posts"><button class="btn">All Pitches</button></a>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-4">
+                <div class="text-white">{{wtf.quick_form(form)}}</div>
+            </div>
+            <div class="col-md-8">
+                <h2 class="text-center text-white">All comments:</h2>
+                <p>{{display_comments(comments)}}</p>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        body {
+            background-image: url(/static/images/background.jpg);
+        }
+    </style>
+</body>
 {% endblock%}

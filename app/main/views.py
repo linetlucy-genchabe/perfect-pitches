@@ -10,9 +10,9 @@ from ..models import Post, Comment, User,Upvote,Downvote
 def index():
     posts = Post.query.all()
     product = Post.query.filter_by(category='product').all()
-    idea = Post.query.filter_by(category='idea').all()
-    business = Post.query.filter_by(category='Business').all()
-    return render_template('index.html', business=business, product=product, idea=idea, posts=posts)
+    interview = Post.query.filter_by(category='interview').all()
+    pickuplines = Post.query.filter_by(category='pickuplines').all()
+    return render_template('index.html', pickuplines=pickuplines, product=product, interview=interview, posts=posts)
 
 
 @main.route('/posts')
@@ -20,7 +20,7 @@ def index():
 def posts():
     posts = Post.query.all()
     likes = Upvote.query.all()
-    user = current_user
+    user = current_user._get_current_object().id
     return render_template('pitch_display.html', posts=posts, likes=likes, user=user)
 
 

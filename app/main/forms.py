@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     post = TextAreaField('Pitch', validators=[DataRequired()])
-    category = SelectField('Category', choices=[('PRODUCT', 'PRODUCT'), ('IDEA', 'IDEA'), ('Business', 'Business')],
+    category = SelectField('Category', choices=[('PRODUCT', 'PRODUCT'), ('INTERVIEW', 'INTERVIEW'), ('PICKUPLINES', 'PICKUPLINES')],
                            validators=[DataRequired()])
     submit = SubmitField('Post')
 

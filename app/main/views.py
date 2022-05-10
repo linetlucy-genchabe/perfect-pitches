@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for
 from flask_login import login_required, current_user
 
 
+
 from . import main
 from .forms import PostForm, CommentForm,UpdateProfile
 from ..models import Post, Comment, User,Upvote,Downvote
@@ -70,7 +71,7 @@ def user():
     user = User.query.filter_by(username=username).first()
     if user is None:
         return ('not found')
-    return render_template('profile.html', user=user)
+    return render_template('profile/profile.html', user=user)
 
 @main.route('/user/<name>/update_profile', methods=['POST', 'GET'])
 @login_required
